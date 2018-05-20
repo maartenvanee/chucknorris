@@ -1,0 +1,6 @@
+.list {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 50%;
+}

@@ -1,4 +1,8 @@
 <h1>Chuck Norris Jokes</h1>
-<button>Get 10 jokes</button>
-<jokes></jokes>
-<favoritejokes></favoritejokes>
+
+<button class="actionButton" (click)="getRandomJokes()">Get new jokes</button>
+<button class="actionButton {{hasMaxFavorites() ? 'disabled' : ''}}" (click)="toggleAddingFavorites()">{{this.addingFavorites ? 'Stop' : 'Start'}} adding favorites</button>
+<hr>
+
+<jokelist [title]="'Jokes'" [jokes]="randomJokes" (onToggleFavorite)="toggleFavorite($event)"></jokelist>
+<jokelist [title]="'Favorites'" [jokes]="favoriteJokes" (onToggleFavorite)="toggleFavorite($event)"></jokelist>

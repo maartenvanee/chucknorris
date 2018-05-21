@@ -11,8 +11,9 @@ export class ChuckNorrisPageComponent implements OnInit {
 
     public randomJokes: Joke[] = [];
     public favoriteJokes: Joke[] = [];
-    private interval;
     public addingFavorites: boolean = false;
+
+    private interval;
     private maxFavJokes: number = 10;
 
     constructor(private chuckNorrisService: ChuckNorrisService) { }
@@ -58,9 +59,13 @@ export class ChuckNorrisPageComponent implements OnInit {
     }
 
     private getStoredFavoriteJokes() {
-        let storedJokesData = localStorage.getItem("FavoriteJokes");
-        let jokes = JSON.parse(storedJokesData);
-        this.favoriteJokes = jokes;
+        let storedJokesJSON = localStorage.getItem("FavoriteJokes");
+        if (storedJokesJSON) {
+            let jokes = JSON.parse(storedJokesJSON);
+            if (jokes.length) {
+                this.favoriteJokes = jokes;
+            }
+        }
     }
 
     private addRandomJokeToFavorites() {

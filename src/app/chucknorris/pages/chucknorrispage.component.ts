@@ -1,6 +1,6 @@
 import { ChuckNorrisService } from './../chucknorris.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
+import { Joke } from '../interfaces/joke.interface';
 
 @Component({
     selector: 'chucknorrispage',
@@ -13,7 +13,7 @@ export class ChuckNorrisPageComponent implements OnInit {
     public favoriteJokes: Joke[] = [];
     public addingFavorites: boolean = false;
 
-    private interval;
+    private interval: NodeJS.Timer;
     private maxFavJokes: number = 10;
 
     constructor(private chuckNorrisService: ChuckNorrisService) { }

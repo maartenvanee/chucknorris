@@ -1,5 +1,5 @@
+import { Joke } from './../../interfaces/joke.interface';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-
 
 @Component({
     selector: 'joketile',

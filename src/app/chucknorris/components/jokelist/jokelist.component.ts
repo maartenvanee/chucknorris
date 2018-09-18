@@ -1,3 +1,4 @@
+import { Joke } from './../../interfaces/joke.interface';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -18,7 +19,7 @@ export class JokeListComponent {
 
     constructor() { }
 
-    public toggleFavorite(joke:Joke) {
+    public toggleFavorite(joke: Joke) {
         this.onToggleFavorite.emit(joke);
     }
 }

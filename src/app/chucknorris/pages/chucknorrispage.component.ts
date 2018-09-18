@@ -13,7 +13,7 @@ export class ChuckNorrisPageComponent implements OnInit {
     public favoriteJokes: Joke[] = [];
     public addingFavorites: boolean = false;
 
-    private interval: NodeJS.Timer;
+    private interval: any;
     private maxFavJokes: number = 10;
 
     constructor(private chuckNorrisService: ChuckNorrisService) { }

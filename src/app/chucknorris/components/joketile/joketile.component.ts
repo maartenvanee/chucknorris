@@ -4,7 +4,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'joketile',
     templateUrl: './joketile.component.html',
-    styleUrls: ['./joketile.component.css']
+    styleUrls: ['./joketile.component.scss']
 })
 export class JokeTileComponent {
 

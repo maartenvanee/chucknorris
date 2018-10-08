@@ -5,7 +5,7 @@ import { Joke } from '../interfaces/joke.interface';
 @Component({
     selector: 'chucknorrispage',
     templateUrl: './chucknorrispage.component.html',
-    styleUrls: ['./chucknorrispage.component.css']
+    styleUrls: ['./chucknorrispage.component.scss']
 })
 export class ChuckNorrisPageComponent implements OnInit {
 

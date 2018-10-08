@@ -4,7 +4,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'jokelist',
     templateUrl: './jokelist.component.html',
-    styleUrls: ['./jokelist.component.css']
+    styleUrls: ['./jokelist.component.scss']
 })
 export class JokeListComponent {
 

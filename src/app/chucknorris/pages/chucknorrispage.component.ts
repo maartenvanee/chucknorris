@@ -9,8 +9,8 @@ import { JokeResponse } from "../interfaces/jokeresponse.interface";
     styleUrls: ["./chucknorrispage.component.scss"]
 })
 export class ChuckNorrisPageComponent implements OnInit {
-    public randomJokes: Joke[] = [];
-    public favoriteJokes: Joke[] = [];
+    public randomJokes: Array<Joke> = [];
+    public favoriteJokes: Array<Joke> = [];
     public addingFavorites: boolean = false;
 
     private interval: NodeJS.Timer;
@@ -76,7 +76,7 @@ export class ChuckNorrisPageComponent implements OnInit {
     private addRandomJokeToFavorites() {
         this.chuckNorrisService.getRandomJokes(1).subscribe(
             (response: JokeResponse) => {
-                let jokes: Joke[] = response.value;
+                let jokes: Array<Joke> = response.value;
                 let joke: Joke = jokes[0];
                 this.addJokeToFavorites(joke);
             },

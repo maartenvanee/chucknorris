@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 })
 export class JokeListComponent {
     @Input()
-    public jokes: Joke[];
+    public jokes: Array<Joke>;
 
     @Input()
     public title: string;

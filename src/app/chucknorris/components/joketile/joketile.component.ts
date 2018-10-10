@@ -1,23 +1,21 @@
-import { Joke } from './../../interfaces/joke.interface';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Joke } from "./../../interfaces/joke.interface";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-    selector: 'joketile',
-    templateUrl: './joketile.component.html',
-    styleUrls: ['./joketile.component.scss']
+    selector: "joketile",
+    templateUrl: "./joketile.component.html",
+    styleUrls: ["./joketile.component.scss"]
 })
 export class JokeTileComponent {
-
     @Input()
     public joke: Joke;
 
     @Output()
     public onToggleFavorite: EventEmitter<Joke> = new EventEmitter();
 
-    constructor() { }
+    constructor() {}
 
     public toggleFavorite() {
         this.onToggleFavorite.emit(this.joke);
     }
-
 }

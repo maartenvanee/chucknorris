@@ -77,7 +77,7 @@ export class ChuckNorrisPageComponent implements OnInit {
         this.chuckNorrisService.getRandomJokes(1).subscribe(
             (response: JokeResponse) => {
                 let jokes: Joke[] = response.value;
-                let joke = jokes[0];
+                let joke: Joke = jokes[0];
                 this.addJokeToFavorites(joke);
             },
             error => {
@@ -108,7 +108,7 @@ export class ChuckNorrisPageComponent implements OnInit {
     }
 
     private updateLocalStorage() {
-        let favsJson = JSON.stringify(this.favoriteJokes);
+        let favsJson: string = JSON.stringify(this.favoriteJokes);
         localStorage.setItem("FavoriteJokes", favsJson);
     }
 }

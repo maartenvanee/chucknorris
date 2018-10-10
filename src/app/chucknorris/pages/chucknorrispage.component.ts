@@ -1,33 +1,36 @@
-import { ChuckNorrisService } from './../chucknorris.service';
-import { Component, OnInit } from '@angular/core';
-import { Joke } from '../interfaces/joke.interface';
+import { ChuckNorrisService } from "./../chucknorris.service";
+import { Component, OnInit } from "@angular/core";
+import { Joke } from "../interfaces/joke.interface";
+import { JokeResponse } from "../interfaces/jokeresponse.interface";
 
 @Component({
-    selector: 'chucknorrispage',
-    templateUrl: './chucknorrispage.component.html',
-    styleUrls: ['./chucknorrispage.component.scss']
+    selector: "chucknorrispage",
+    templateUrl: "./chucknorrispage.component.html",
+    styleUrls: ["./chucknorrispage.component.scss"]
 })
 export class ChuckNorrisPageComponent implements OnInit {
-
     public randomJokes: Joke[] = [];
     public favoriteJokes: Joke[] = [];
     public addingFavorites: boolean = false;
 
-    private interval: any;
+    private interval: NodeJS.Timer;
     private maxFavJokes: number = 10;
 
-    constructor(private chuckNorrisService: ChuckNorrisService) { }
+    constructor(private chuckNorrisService: ChuckNorrisService) {}
 
     ngOnInit() {
         this.getStoredFavoriteJokes();
     }
 
     public getRandomJokes() {
-        this.chuckNorrisService.getRandomJokes(10).subscribe((response: any) => {
-            this.randomJokes = response.value;
-        }, error => {
-            console.log('error: ', error);
-        });
+        this.chuckNorrisService.getRandomJokes(10).subscribe(
+            (response: JokeResponse) => {
+                this.randomJokes = response.value;
+            },
+            (error: any) => {
+                console.log("error: ", error);
+            }
+        );
     }
 
     public toggleFavorite(joke: Joke) {
@@ -43,8 +46,10 @@ export class ChuckNorrisPageComponent implements OnInit {
             if (this.hasMaxFavorites()) {
                 return;
             }
-            if (this.favoriteJokes.length <= (this.maxFavJokes - 2)) {
-                this.interval = setInterval(() => this.addRandomJokeToFavorites(), 5000);
+            if (this.favoriteJokes.length <= this.maxFavJokes - 2) {
+                this.interval = setInterval(() => {
+                    this.addRandomJokeToFavorites();
+                }, 5000);
                 this.addingFavorites = true;
             }
             this.addRandomJokeToFavorites();
@@ -69,17 +74,19 @@ export class ChuckNorrisPageComponent implements OnInit {
     }
 
     private addRandomJokeToFavorites() {
-        this.chuckNorrisService.getRandomJokes(1).subscribe((response: any) => {
-            let jokes: Joke[] = response.value;
-            let joke = jokes[0];
-            this.addJokeToFavorites(joke);
-        }, error => {
-            console.log('error: ', error);
-        });
+        this.chuckNorrisService.getRandomJokes(1).subscribe(
+            (response: JokeResponse) => {
+                let jokes: Joke[] = response.value;
+                let joke = jokes[0];
+                this.addJokeToFavorites(joke);
+            },
+            error => {
+                console.log("error: ", error);
+            }
+        );
     }
 
     private addJokeToFavorites(joke: Joke) {
-
         if (this.hasMaxFavorites()) {
             return;
         }
@@ -102,6 +109,6 @@ export class ChuckNorrisPageComponent implements OnInit {
 
     private updateLocalStorage() {
         let favsJson = JSON.stringify(this.favoriteJokes);
-        localStorage.setItem('FavoriteJokes', favsJson);
+        localStorage.setItem("FavoriteJokes", favsJson);
     }
 }

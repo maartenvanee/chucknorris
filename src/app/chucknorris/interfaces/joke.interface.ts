@@ -1,6 +1,6 @@
 export interface Joke {
     id: number;
     joke: string;
-    categories: string[];
+    categories: Array<string>;
     favorite?: boolean;
 }

@@ -3,4 +3,9 @@
     position: relative;
     vertical-align: top;
     width: 50%;
+
+    ul {
+        padding: 0;
+        list-style-type: none;
+    }
 }
